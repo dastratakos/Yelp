@@ -11,6 +11,7 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import kotlinx.android.synthetic.main.item_restaurant.view.*
+import kotlinx.android.synthetic.main.toolbar_details.view.*
 
 private const val TAG = "RestaurantsAdapter"
 class RestaurantsAdapter(val context: Context, val restaurants: List<YelpRestaurant>, val onClickListener: OnClickListener) :
@@ -48,7 +49,7 @@ class RestaurantsAdapter(val context: Context, val restaurants: List<YelpRestaur
             itemView.tvPrice.text = restaurant.price
             Glide.with(context).load(restaurant.imageUrl).apply(RequestOptions().transforms(
                 CenterCrop(), RoundedCorners(20)
-            )).into(itemView.imageView)
+            )).into(itemView.imageViewItemRestaurant)
         }
 
     }

@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Yelp">
         <activity
-            android:name=".BusinessDetailsActivity"
+            android:name=".BusinessDetailActivity"
             android:label="@string/title_activity_business_details"
             android:parentActivityName=".MainActivity">
             <!-- The meta-data tag is required if you support API level 15 and lower -->

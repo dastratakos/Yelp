@@ -10,6 +10,7 @@ data class YelpSearchResult (
 )
 
 data class YelpRestaurant (
+    val id: String,
     val name: String,
     val rating: Double,
     val price: String,
@@ -25,6 +26,23 @@ data class YelpRestaurant (
         return "$distanceInMiles mi"
     }
 }
+
+data class YelpBusinessDetail (
+    val name: String,
+    @SerializedName("image_url") val imageUrl: String,
+    @SerializedName("is_claimed") val isClaimed: String,
+    @SerializedName("is_closed") val isClosed: String,
+    val url: String,
+    @SerializedName("display_phone") val phone: String,
+    @SerializedName("review_count") val numReviews: Int,
+    val categories: List<YelpCategory>,
+    val rating: Double,
+    val location: YelpLocation,
+    val photos: List<String>,
+    val price: String,
+    // hours
+    val transactions: List<String>
+)
 
 data class YelpCategory (
     val title: String

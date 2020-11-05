@@ -13,7 +13,7 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-
+const val BUSINESS_ID = "BUSINESS_ID"
 private const val TAG = "MainActivity"
 private const val BASE_URL = "https://api.yelp.com/v3/"
 private const val API_KEY = "lR-eskg2rr8aNV_HMW5N3v8XSSME8IwuPSAPQtGklX-jx4eNkx36OxdOdOiSxbCNrzDv" +
@@ -23,16 +23,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-//        setSupportActionBar(findViewById(R.id.toolbar))
-
         val restaurants = mutableListOf<YelpRestaurant>()
         rvRestaurants.layoutManager = LinearLayoutManager(this)
         val adapter = RestaurantsAdapter(this, restaurants, object: RestaurantsAdapter.OnClickListener {
             override fun onItemClick(position: Int) {
                 Log.i(TAG, "onItemClick $position")
                 // When the user taps on a view in RV, navigate to new activity
-                val intent = Intent(this@MainActivity, BusinessDetailsActivity::class.java)
-//                intent.putExtra(EXTRA_USER_MAP, userMaps[position])
+                val intent = Intent(this@MainActivity, BusinessDetailActivity::class.java)
+                intent.putExtra(BUSINESS_ID, restaurants[position].id)
                 startActivity(intent)
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
             }

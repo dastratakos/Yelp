@@ -7,7 +7,7 @@
     tools:context=".MainActivity">
 
     <include
-        android:id="@+id/toolbar"
+        android:id="@+id/toolbar_home"
         layout="@layout/toolbar_home" />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -18,5 +18,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_below="@+id/toolbar"/>
+        android:layout_below="@+id/toolbar_home"/>
 </RelativeLayout>

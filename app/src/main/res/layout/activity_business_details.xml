@@ -1,19 +1,148 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <include
-        android:id="@+id/toolbar"
+        android:id="@+id/toolbar_details"
         layout="@layout/toolbar_details" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="hello world, my guy!"
-        tools:layout_editor_absoluteX="123dp"
-        tools:layout_editor_absoluteY="288dp" />
+<!--    <ScrollView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="0dp"-->
+<!--        android:layout_below="@+id/toolbar_details"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.0"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/toolbar_details">-->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_details"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="-40dp">
+
+        <ImageView
+            android:id="@+id/imageViewBusinessDetail"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="0dp"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewBusinessDetail"
+            tools:text="Charley St" />
+
+        <RatingBar
+            android:id="@+id/ratingBar"
+            style="@style/Widget.AppCompat.RatingBar.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:numStars="5"
+            android:rating="4.5"
+            android:stepSize="0.5"
+            app:layout_constraintStart_toStartOf="@+id/tvName"
+            app:layout_constraintTop_toBottomOf="@+id/tvName" />
+
+        <TextView
+            android:id="@+id/tvNumReviews"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:textColor="@android:color/darker_gray"
+            app:layout_constraintBottom_toBottomOf="@+id/ratingBar"
+            app:layout_constraintStart_toEndOf="@+id/ratingBar"
+            tools:text="321 Reviews" />
+
+        <TextView
+            android:id="@+id/tvPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textColor="@android:color/darker_gray"
+            app:layout_constraintStart_toStartOf="@+id/tvName"
+            app:layout_constraintTop_toBottomOf="@+id/ratingBar"
+            tools:text="$$" />
+
+        <TextView
+            android:id="@+id/tvSeparator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:text="•"
+            android:textColor="@android:color/darker_gray"
+            app:layout_constraintBottom_toBottomOf="@+id/tvPrice"
+            app:layout_constraintStart_toEndOf="@+id/tvPrice"
+            app:layout_constraintTop_toTopOf="@+id/tvPrice" />
+
+        <TextView
+            android:id="@+id/tvCategory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@android:color/darker_gray"
+            app:layout_constraintBottom_toBottomOf="@+id/tvPrice"
+            app:layout_constraintStart_toEndOf="@+id/tvSeparator"
+            app:layout_constraintTop_toTopOf="@+id/tvPrice"
+            tools:text="Breakfast" />
+
+        <TextView
+            android:id="@+id/tvAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@android:color/darker_gray"
+            app:layout_constraintStart_toStartOf="@+id/tvName"
+            app:layout_constraintTop_toBottomOf="@+id/tvPrice"
+            tools:text="41 Kenmare St" />
+
+        <TextView
+            android:id="@+id/tvPhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@android:color/darker_gray"
+            app:layout_constraintStart_toStartOf="@+id/tvName"
+            app:layout_constraintTop_toBottomOf="@+id/tvAddress"
+            tools:text="Phone: (714) 882-5858" />
+
+        <TextView
+            android:id="@+id/tvTransactions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@android:color/darker_gray"
+            app:layout_constraintStart_toStartOf="@+id/tvName"
+            app:layout_constraintTop_toBottomOf="@+id/tvPhone"
+            tools:text="pickup, delivery" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--    </ScrollView>-->
+
 </androidx.constraintlayout.widget.ConstraintLayout>
