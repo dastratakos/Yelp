@@ -4,6 +4,10 @@ import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentPagerAdapter
+import androidx.viewpager.widget.ViewPager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
@@ -12,6 +16,7 @@ import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnima
 import com.smarteist.autoimageslider.SliderAnimations
 import com.smarteist.autoimageslider.SliderView
 import kotlinx.android.synthetic.main.activity_business_details.*
+import kotlinx.android.synthetic.main.tab_overview.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -30,8 +35,12 @@ class BusinessDetailActivity : AppCompatActivity() {
 
     @ExperimentalStdlibApi
     override fun onCreate(savedInstanceState: Bundle?) {
+        Log.i(TAG, "onCreate")
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_business_details)
+
+        viewPager.adapter = ViewPagerAdapter(supportFragmentManager)
+        tabLayout.setupWithViewPager(viewPager)
 
         id = intent.getSerializableExtra(BUSINESS_ID) as String
 
