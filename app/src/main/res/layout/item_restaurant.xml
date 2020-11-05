@@ -53,23 +53,23 @@
         android:layout_width="285dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
+        android:ellipsize="end"
+        android:maxLines="1"
         app:layout_constraintStart_toStartOf="@+id/tvName"
         app:layout_constraintTop_toBottomOf="@+id/ratingBar"
-        tools:text="41 Kenmare St"
-        android:maxLines="1"
-        android:ellipsize="end" />
+        tools:text="41 Kenmare St" />
 
     <TextView
         android:id="@+id/tvCategory"
         android:layout_width="285dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
+        android:ellipsize="end"
+        android:maxLines="1"
         android:textColor="@android:color/darker_gray"
         app:layout_constraintStart_toStartOf="@+id/tvName"
         app:layout_constraintTop_toBottomOf="@+id/tvAddress"
-        tools:text="Breakfast"
-        android:maxLines="1"
-        android:ellipsize="end" />
+        tools:text="Breakfast" />
 
     <TextView
         android:id="@+id/tvDistance"
@@ -89,4 +89,5 @@
         app:layout_constraintEnd_toEndOf="@+id/tvDistance"
         app:layout_constraintTop_toBottomOf="@+id/tvDistance"
         tools:text="$$" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
