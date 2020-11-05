@@ -15,7 +15,10 @@ The following **required** functionality is completed:
 
 The following **extensions** are implemented:
 
+* [x] Clicking on a business in the list opens a new page with more details
+    * [x] The photos are displayed in a image slider component
 * [x] The app icon and color scheme are customized to resemble the official Yelp app
+* [x] A custom Toolbar is implemented to include the Yelp logo
 
 ## Video Walkthrough
 

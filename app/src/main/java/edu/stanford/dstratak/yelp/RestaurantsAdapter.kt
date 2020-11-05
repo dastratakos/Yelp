@@ -14,8 +14,10 @@ import kotlinx.android.synthetic.main.item_restaurant.view.*
 import kotlinx.android.synthetic.main.toolbar_details.view.*
 
 private const val TAG = "RestaurantsAdapter"
-class RestaurantsAdapter(val context: Context, val restaurants: List<YelpRestaurant>, val onClickListener: OnClickListener) :
-    RecyclerView.Adapter<RestaurantsAdapter.ViewHolder>() {
+class RestaurantsAdapter(val context: Context,
+                         private val restaurants: List<YelpRestaurant>,
+                         private val onClickListener: OnClickListener)
+    : RecyclerView.Adapter<RestaurantsAdapter.ViewHolder>() {
 
     interface OnClickListener {
         fun onItemClick(position: Int)
@@ -47,10 +49,10 @@ class RestaurantsAdapter(val context: Context, val restaurants: List<YelpRestaur
             itemView.tvCategory.text = restaurant.categories[0].title
             itemView.tvDistance.text = restaurant.displayDistance()
             itemView.tvPrice.text = restaurant.price
-            Glide.with(context).load(restaurant.imageUrl).apply(RequestOptions().transforms(
-                CenterCrop(), RoundedCorners(20)
-            )).into(itemView.imageViewItemRestaurant)
+            Glide.with(context)
+                .load(restaurant.imageUrl)
+                .apply(RequestOptions().transform(CenterCrop(), RoundedCorners(20)))
+                .into(itemView.imageViewItemRestaurant)
         }
-
     }
 }
