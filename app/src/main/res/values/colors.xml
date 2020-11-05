@@ -6,5 +6,20 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+
+    <color name="red_dark">#D32323</color>
+    <color name="red_regular">#F15C4F</color>
+    <color name="red_light">#F8ADA8</color>
+    <color name="red_extra_light">#FCD6D3</color>
+
+    <color name="black_dark">#050505</color>
+    <color name="black_regular">#333333</color>
+    <color name="black_light">#4D4D4D</color>
+    <color name="black_extra_light">#666666</color>
+
+    <color name="gray_dark">#999999</color>
+    <color name="gray_regular">#CCCCCC</color>
+    <color name="gray_light">#E6E6E6</color>
+    <color name="gray_extra_light">#F5F5F5</color>
+
 </resources>
