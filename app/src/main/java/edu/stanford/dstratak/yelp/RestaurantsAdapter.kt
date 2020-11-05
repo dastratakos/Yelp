@@ -1,6 +1,7 @@
 package edu.stanford.dstratak.yelp
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,8 +12,13 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import kotlinx.android.synthetic.main.item_restaurant.view.*
 
-class RestaurantsAdapter(val context: Context, val restaurants: List<YelpRestaurant>) :
+private const val TAG = "RestaurantsAdapter"
+class RestaurantsAdapter(val context: Context, val restaurants: List<YelpRestaurant>, val onClickListener: OnClickListener) :
     RecyclerView.Adapter<RestaurantsAdapter.ViewHolder>() {
+
+    interface OnClickListener {
+        fun onItemClick(position: Int)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(LayoutInflater.from(context).inflate(R.layout.item_restaurant, parent, false ))
@@ -22,6 +28,12 @@ class RestaurantsAdapter(val context: Context, val restaurants: List<YelpRestaur
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val restaurant = restaurants[position]
+
+        holder.itemView.setOnClickListener {
+            Log.i(TAG, "Tapped on position $position")
+            onClickListener.onItemClick(position)
+        }
+
         holder.bind(restaurant)
     }
 

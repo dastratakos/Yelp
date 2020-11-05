@@ -26,7 +26,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="Yelp Home"
+            android:text="@string/title_activity_business_details"
             android:gravity="center_vertical"
             android:textSize="20sp"
             android:textColor="@android:color/white"

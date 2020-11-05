@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Yelp</string>
+    <string name="title_activity_main">Home</string>
+    <string name="title_activity_business_details">Details</string>
 </resources>
