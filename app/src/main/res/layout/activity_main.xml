@@ -6,10 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <include
-        android:id="@+id/toolbar_home"
-        layout="@layout/toolbar_home" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvRestaurants"
         android:layout_width="match_parent"
@@ -17,6 +13,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_below="@+id/toolbar_home"/>
+        app:layout_constraintTop_toTopOf="parent" />
+<!--        android:layout_below="@+id/toolbar_home"-->
+        
 </RelativeLayout>
