@@ -35,9 +35,6 @@ class BusinessDetailActivity : AppCompatActivity() {
 
         id = intent.getSerializableExtra(BUSINESS_ID) as String
 
-        setSupportActionBar(findViewById(R.id.toolbar_details))
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
         val photos = mutableListOf<String>()
 
         val adapter = SliderAdapter(this, photos)
