@@ -2,7 +2,6 @@ package edu.stanford.dstratak.yelp
 
 import android.content.Context
 import android.util.Log
-import android.view.LayoutInflater
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
@@ -22,6 +21,7 @@ class MyFragmentPagerAdapter(fragmentManager: FragmentManager, context: Context)
     override fun getPageTitle(position: Int): CharSequence? = tabTitles[position]
 
     fun addFragment(fragment: Fragment, title: String) {
+        Log.i(TAG, "adding fragment $title")
         tabs.add(fragment)
         tabTitles.add(title)
     }

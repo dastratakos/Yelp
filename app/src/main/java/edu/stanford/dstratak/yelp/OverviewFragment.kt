@@ -8,6 +8,6 @@ import androidx.fragment.app.Fragment
 
 class OverviewFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.activity_business_detail_overview, container, false)
+        return inflater.inflate(R.layout.fragment_restaurant_overview, container, false)
     }
 }

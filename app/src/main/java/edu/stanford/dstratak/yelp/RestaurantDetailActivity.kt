@@ -15,10 +15,9 @@ import com.google.android.material.tabs.TabLayout
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType
 import com.smarteist.autoimageslider.SliderAnimations
 import com.smarteist.autoimageslider.SliderView
-import kotlinx.android.synthetic.main.activity_business_detail_overview.*
-import kotlinx.android.synthetic.main.activity_business_detail_reviews.*
-import kotlinx.android.synthetic.main.activity_business_details.*
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_restaurant_overview.*
+import kotlinx.android.synthetic.main.fragment_restaurant_reviews.*
+import kotlinx.android.synthetic.main.activity_restaurant_details.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -30,20 +29,20 @@ import java.util.*
 private const val BASE_URL = "https://api.yelp.com/v3/"
 private const val API_KEY = "lR-eskg2rr8aNV_HMW5N3v8XSSME8IwuPSAPQtGklX-jx4eNkx36OxdOdOiSxbCNrzDv" +
         "HMnXam73Hfqhizx5bwLoL-j1pIoiAW5wrZAr9m1CQfY2Ngxv33JYB4SiX3Yx"
-private const val TAG = "BusinessDetailActivity"
-class BusinessDetailActivity : AppCompatActivity() {
+private const val TAG = "RestaurantDetailActivity"
+class RestaurantDetailActivity : AppCompatActivity() {
 
     private lateinit var id: String
-    lateinit var adapter: SliderAdapter
+    lateinit var photosAdapter: SliderAdapter
     val photos = mutableListOf<String>()
     val reviews = mutableListOf<YelpReview>()
 
     @ExperimentalStdlibApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_business_details)
+        setContentView(R.layout.activity_restaurant_details)
 
-        id = intent.getSerializableExtra(BUSINESS_ID) as String
+        id = intent.getSerializableExtra(RESTAURANT_ID) as String
 
         val viewPager = findViewById<View>(R.id.viewpager) as ViewPager
         var pagerAdapter = MyFragmentPagerAdapter(supportFragmentManager, this)
@@ -62,10 +61,10 @@ class BusinessDetailActivity : AppCompatActivity() {
                 .build()
         val yelpService = retrofit.create(YelpService::class.java)
         yelpService.getDetails("Bearer $API_KEY", id)
-            .enqueue(object : Callback<YelpBusinessDetail> {
+            .enqueue(object : Callback<YelpRestaurantDetail> {
                 override fun onResponse(
-                        call: Call<YelpBusinessDetail>,
-                        response: Response<YelpBusinessDetail>
+                        call: Call<YelpRestaurantDetail>,
+                        response: Response<YelpRestaurantDetail>
                 ) {
                     Log.i(TAG, "onResponse $response")
                     val body = response.body()
@@ -75,10 +74,10 @@ class BusinessDetailActivity : AppCompatActivity() {
                     }
                     bindDetails(body)
                     photos.addAll(body.photos.drop(1))
-                    adapter.notifyDataSetChanged()
+                    photosAdapter.notifyDataSetChanged()
                 }
 
-                override fun onFailure(call: Call<YelpBusinessDetail>, t: Throwable) {
+                override fun onFailure(call: Call<YelpRestaurantDetail>, t: Throwable) {
                     Log.i(TAG, "onFailure $t")
                 }
             })
@@ -97,7 +96,7 @@ class BusinessDetailActivity : AppCompatActivity() {
                     }
                     bindReviews()
                     reviews.addAll(body.reviews)
-                    adapter.notifyDataSetChanged()
+                    pagerAdapter.notifyDataSetChanged()
                 }
 
                 override fun onFailure(call: Call<YelpReviews>, t: Throwable) {
@@ -108,14 +107,14 @@ class BusinessDetailActivity : AppCompatActivity() {
     }
 
     @ExperimentalStdlibApi
-    fun bindDetails(body: YelpBusinessDetail) {
-        Glide.with(this@BusinessDetailActivity)
+    fun bindDetails(body: YelpRestaurantDetail) {
+        Glide.with(this@RestaurantDetailActivity)
             .load(body.imageUrl)
             .apply(RequestOptions().transform(CenterCrop()))
-            .into(imageViewBusinessDetail)
+            .into(imageViewRestaurantDetail)
 
-        adapter = SliderAdapter(this, photos)
-        imageSlider.setSliderAdapter(adapter)
+        photosAdapter = SliderAdapter(this, photos)
+        imageSlider.setSliderAdapter(photosAdapter)
 
         imageSlider.setIndicatorAnimation(IndicatorAnimationType.WORM)
         imageSlider.setSliderTransformAnimation(SliderAnimations.SIMPLETRANSFORMATION)

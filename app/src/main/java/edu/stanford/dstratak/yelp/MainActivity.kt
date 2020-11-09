@@ -18,7 +18,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 
-const val BUSINESS_ID = "BUSINESS_ID"
+const val RESTAURANT_ID = "RESTAURANT_ID"
 private const val TAG = "MainActivity"
 private const val BASE_URL = "https://api.yelp.com/v3/"
 private const val API_KEY = "lR-eskg2rr8aNV_HMW5N3v8XSSME8IwuPSAPQtGklX-jx4eNkx36OxdOdOiSxbCNrzDv" +
@@ -51,8 +51,8 @@ class MainActivity : AppCompatActivity() {
             override fun onItemClick(position: Int) {
                 Log.i(TAG, "onItemClick $position")
                 // When the user taps on a view in RV, navigate to new activity
-                val intent = Intent(this@MainActivity, BusinessDetailActivity::class.java)
-                intent.putExtra(BUSINESS_ID, restaurants[position].id)
+                val intent = Intent(this@MainActivity, RestaurantDetailActivity::class.java)
+                intent.putExtra(RESTAURANT_ID, restaurants[position].id)
                 startActivity(intent)
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
             }
@@ -100,7 +100,6 @@ class MainActivity : AppCompatActivity() {
         val searchView: SearchView = MenuItemCompat.getActionView(searchItem) as SearchView
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                // perform query here
                 Log.i(TAG, "onQueryTextSubmit: $query")
                 if (query != null) {
                     if (query.contains(" in ")) {
@@ -112,8 +111,6 @@ class MainActivity : AppCompatActivity() {
                 } else {
                     Log.i(TAG, "invalid search")
                 }
-                // workaround to avoid issues with some emulators and keyboard devices firing twice if a keyboard enter is used
-                // see https://code.google.com/p/android/issues/detail?id=24599
                 searchView.clearFocus()
                 return true
             }

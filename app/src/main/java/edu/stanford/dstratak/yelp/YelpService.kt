@@ -6,7 +6,7 @@ import retrofit2.http.Header
 import retrofit2.http.Path
 import retrofit2.http.Query
 
-public interface YelpService {
+interface YelpService {
 
     @GET("businesses/search")
     fun searchRestaurants(
@@ -17,7 +17,7 @@ public interface YelpService {
     @GET("businesses/{id}")
     fun getDetails(
         @Header("Authorization") authHeader: String,
-        @Path("id") id: String): Call<YelpBusinessDetail>
+        @Path("id") id: String): Call<YelpRestaurantDetail>
 
     @GET("businesses/{id}/reviews")
     fun getReviews(
