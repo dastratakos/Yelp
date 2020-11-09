@@ -4,7 +4,7 @@
 
 **Yelp clone** displays a list of search results from the Yelp API and displays the results in a scrollable list. 
 
-Time spent: **X** hours spent in total
+Time spent: **20** hours spent in total
 
 ## Functionality 
 
@@ -24,9 +24,36 @@ The following **extensions** are implemented:
 
 ## Video Walkthrough
 
-Here's a walkthrough of implemented user stories:
+### Design
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+The first GIF demonstrates the app logo as well as the design of the app's home page with the Yelp
+color scheme. The restaurant list shows basic information about each restaurant along with a
+corresponding thumbnail.
+
+<img src="GIFs/design.gif" title="App design" alt="App design" width="400" />
+
+### Search feature
+
+Below is a walkthrough of the search feature. A user can type a category in the search bar and the
+list of restaurants will update based on the key words. Furthermore, the user can specify a location
+by typing "`category` in `location`". The list then updates to show the relevant restaurants in that
+location. Then, the user can enter a new search, and the previous location will be remembered and
+used until the user enters a new location. Note that the original list of pizzas is different from
+the list of pizzas after searching for "sandwiches in Palo Alto".
+
+<img src="GIFs/search.gif" title="Search feature" alt="Search feature" width="400" />
+
+### Details page
+
+This GIF displays the restaurant detail activity. The restaurant's main photo is displayed at the
+top, and there are two tabs underneath - Overview and Reviews. In the Overview tab, the user can
+see detailed information about the restaurant including the phone number and types of transactions.
+The Overview tab also includes an image slider to display other photos of the restaurant. The image
+slider automatically transitions every 4 seconds, but the user can also manually swipe to view more
+images. In the Review tab, the user can see recent reviews on the restaurant along with the name of
+the reviewer and the date of the review.
+
+<img src="GIFs/details.gif" title="Restaurant details" alt="Restaurant details" width="400" />
 
 ## Notes
 
