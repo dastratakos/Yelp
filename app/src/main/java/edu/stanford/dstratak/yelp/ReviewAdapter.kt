@@ -1,16 +1,18 @@
 package edu.stanford.dstratak.yelp
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_review.view.*
+import java.text.ParseException
+import java.text.SimpleDateFormat
+import java.util.*
 
 private const val TAG = "RestaurantsAdapter"
 class ReviewAdapter(val context: Context,
-                         private val reviews: List<YelpReview>)
+                    private val reviews: List<YelpReview>)
     : RecyclerView.Adapter<ReviewAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -27,7 +29,24 @@ class ReviewAdapter(val context: Context,
         fun bind(review: YelpReview) {
             itemView.tvReviewName.text = review.user.name
             itemView.rbReview.rating = review.rating.toFloat()
-            itemView.tvReviewDate.text = review.timestamp
+
+            val format = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+            var date: Date = Date()
+            try {
+                date = format.parse(review.timestamp)
+            } catch (e: ParseException) {
+                e.printStackTrace()
+            }
+
+            val dateFormat = SimpleDateFormat("EEE, M/d/yy 'at' h:mm a")
+            var dateTime = review.timestamp
+            try {
+                dateTime = dateFormat.format(date)
+            } catch (e: ParseException) {
+                e.printStackTrace()
+            }
+
+            itemView.tvReviewDate.text = dateTime
             itemView.tvReviewText.text = review.text
         }
     }
