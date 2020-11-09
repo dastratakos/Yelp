@@ -18,4 +18,9 @@ public interface YelpService {
     fun getDetails(
         @Header("Authorization") authHeader: String,
         @Path("id") id: String): Call<YelpBusinessDetail>
+
+    @GET("businesses/{id}/reviews")
+    fun getReviews(
+        @Header("Authorization") authHeader: String,
+        @Path("id") id: String): Call<YelpReviews>
 }

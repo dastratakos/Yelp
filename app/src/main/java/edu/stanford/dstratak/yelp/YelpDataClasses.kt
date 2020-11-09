@@ -51,3 +51,24 @@ data class YelpCategory (
 data class YelpLocation(
     @SerializedName("address1") val address: String
 )
+
+data class YelpReviews (
+    val reviews: List<YelpReview>,
+    val total: Int
+)
+
+data class YelpReview(
+    val id: String,
+    val rating: Double,
+    val user: YelpUser,
+    val text: String,
+    @SerializedName("time_created") val timestamp: String,
+    val url: String
+)
+
+data class YelpUser(
+    val id: String,
+    @SerializedName("profile_url") val profileUrl: String,
+    @SerializedName("image_url") val imageUrl: String,
+    val name: String
+)

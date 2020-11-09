@@ -11,7 +11,6 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import kotlinx.android.synthetic.main.item_restaurant.view.*
-import kotlinx.android.synthetic.main.toolbar_details.view.*
 
 private const val TAG = "RestaurantsAdapter"
 class RestaurantsAdapter(val context: Context,
