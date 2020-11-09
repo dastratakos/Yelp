@@ -31,6 +31,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var retrofit : Retrofit
     private lateinit var yelpService : YelpService
 
+    private var searchQuery = "Avocado Toast"
+    private var searchLocation = "New York"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -41,7 +44,7 @@ class MainActivity : AppCompatActivity() {
                         .build()
         yelpService = retrofit.create(YelpService::class.java)
 
-        updateSearch("Avocado Toast")
+        updateSearch()
 
         rvRestaurants.layoutManager = LinearLayoutManager(this)
         adapter = RestaurantsAdapter(this, restaurants, object : RestaurantsAdapter.OnClickListener {
@@ -64,8 +67,8 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun updateSearch(query: String) {
-        yelpService.searchRestaurants("Bearer $API_KEY", query, "New York")
+    private fun updateSearch() {
+        yelpService.searchRestaurants("Bearer $API_KEY", searchQuery, searchLocation)
             .enqueue(object : Callback<YelpSearchResult> {
                 override fun onResponse(
                         call: Call<YelpSearchResult>,
@@ -100,7 +103,12 @@ class MainActivity : AppCompatActivity() {
                 // perform query here
                 Log.i(TAG, "onQueryTextSubmit: $query")
                 if (query != null) {
-                    updateSearch(query)
+                    if (query.contains(" in ")) {
+                        val parts = query.split(" in ")
+                        searchQuery = parts[0]
+                        searchLocation = parts[1]
+                    }
+                    updateSearch()
                 } else {
                     Log.i(TAG, "invalid search")
                 }
