@@ -61,12 +61,7 @@ The biggest challenge came when implementing the tab system. I used a TabLayout 
 ViewPager as the main components. Then, I created separate layouts for each of the tabs and
 managed them through a PagerAdapter. It was also difficult to combine this with the Yelp API calls
 to make sure that the components were inflated before trying to populate them with the Yelp search
-results. I have a working solution now, but there are still some bugs. Specifically, I get the error
-```
-lateinit property adapter has not been initialized
-```
-once in a while when clicking on a restaurant in the list. I believe this doesn't occur all the time
-because the inflater is usually faster than the Yelp API call. This is an area of future improvement.
+results.
 
 Another challenge was creating a search bar. Initially, I had created a custom toolbar to replace the
 default menu. The custom toolbar allowed me to specify the text in the title bar as well as include
