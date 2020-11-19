@@ -1,6 +1,7 @@
 # Yelp Clone 
 
-## *Dean Stratakos*
+## Dean Stratakos
+### November 8, 2020
 
 **Yelp clone** displays a list of search results from the Yelp API and displays the results in a scrollable list. 
 
